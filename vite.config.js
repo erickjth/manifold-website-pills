@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	build: {
 		// sourcemap: false,
-		// minify: false,
+		minify: false,
 		rollupOptions: {
 			output: {
 				assetFileNames: 'assets/[name][extname]',
