@@ -2,13 +2,12 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	build: {
-		// sourcemap: false,
 		minify: false,
 		rollupOptions: {
 			output: {
-				assetFileNames: 'assets/[name][extname]',
+				assetFileNames: 'assets/[name].[hash][extname]',
 				manualChunks: undefined,
-				entryFileNames: 'assets/app-[name].js',
+				entryFileNames: 'assets/[name].[hash].js',
 			},
 		},
 	},
