@@ -3,9 +3,14 @@ import { Engine, Runner, MouseConstraint, Mouse, Composite, Body, Bodies, Events
 import { gsap } from 'gsap';
 
 class GravityPillsFall {
+	pillContainer = null;
+	pillItems = [];
 	constructor(selector = '.pills-fallbox', itemSelector = '.pills-fallbox-item') {
 		this.pillContainer = document.querySelector(selector);
-		this.pillItems = Array.from(this.pillContainer.querySelectorAll(itemSelector));
+
+		if (this.pillContainer) {
+			this.pillItems = Array.from(this.pillContainer.querySelectorAll(itemSelector));
+		}
 	}
 
 	setupWorld() {
@@ -152,7 +157,7 @@ class GravityPillsFall {
 	setupBodies() {
 		this.bodies = [];
 		this.pillItems.forEach((item, index) => {
-			const innerItem = item.querySelector('span');
+			const innerItem = item.querySelector('span,img');
 			const rect = item.getBoundingClientRect();
 			const xSetter = gsap.quickSetter(item, 'x', 'px');
 			const ySetter = gsap.quickSetter(item, 'y', 'px');
@@ -233,6 +238,11 @@ class GravityPillsFall {
 	}
 
 	init() {
+		console.log(this.pillContainer, this.pillItems.length);
+		if (!this.pillContainer || this.pillItems.length === 0) {
+			return;
+		}
+
 		this.setupWorld();
 		this.setupWalls();
 		this.setupBodies();

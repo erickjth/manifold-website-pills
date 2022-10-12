@@ -1,8 +1,13 @@
-.demo-wrapper {
+.demo {
 	height: 800px;
 	position: relative;
 	background: #fef2ff;
-	margin-bottom: 100vh;
+}
+
+.demo-2 {
+	height: 500px;
+	position: relative;
+	background: #fef2ff;
 }
 
 .pills-fallbox {
@@ -25,146 +30,140 @@
 	will-change: transform;
 
 	span {
-		display: inline-block;
-		padding: 12px 20px;
+		display: inline-flex;
+		padding: 30px;
+		border-radius: 46px;
 		transform: translate(-50%, -50%);
-		cursor: -webkit-grab;
-		cursor: -moz-grab;
 		cursor: grab;
-		color: #000;
-		background: #fef2ff;
-		border-radius: 18px;
-		font-weight: 500;
-		font-size: 16px;
+		color: #23213a;
+		background-color: #fef2ff;
+		font-family: 'IBM Plex Mono';
+		font-style: normal;
+		font-weight: 300;
 		line-height: 100%;
-		letter-spacing: -0.02em;
+		font-size: 30px;
+		letter-spacing: -1.9px;
 
 		&:active {
-			cursor: -webkit-grabbing;
-			cursor: -moz-grabbing;
 			cursor: grabbing;
 		}
 
-		@media (min-width: 768px) {
-			padding: 14px 24px;
-			border-radius: 25px;
-			font-size: 22px;
+		&:empty {
+			background-position: center;
+			background-size: 80%;
+			background-repeat: no-repeat;
+			&::before {
+				content: '&nbsp;';
+				visibility: hidden;
+			}
 		}
 
-		@media (min-width: 1600px) {
-			padding: 18px 31px;
-			border-radius: 33px;
-			font-size: 28px;
+		img {
+			height: 90px;
+			width: auto;
+			user-select: none;
+			pointer-events: none;
 		}
+
+		@media (max-width: 768px) {
+			padding: 20px;
+			font-size: 22px;
+			border-radius: 36px;
+
+			img {
+				height: 70px;
+			}
+		}
+	}
+
+	&.logo span {
+		padding: 0;
 	}
 
 	/******** Sizes ***********/
 	&.large span {
-		padding: 13px 23px;
-		border-radius: 25px;
-		font-size: 23px;
-
-		@media (min-width: 768px) {
-			padding: 30px 50px;
-			border-radius: 55px;
-			font-size: 49px;
-		}
-
-		@media (min-width: 1200px) {
-			padding: 23px 40px;
-			border-radius: 44px;
-			font-size: 38px;
-		}
-
-		@media (min-width: 1024px) {
-			padding: 19px 32px;
-			border-radius: 36px;
-			font-size: 31px;
-		}
-
-		@media (min-width: 1600px) {
-			padding: 31px 54px;
-			border-radius: 58px;
-			font-size: 52px;
-		}
-	}
-
-	&.extraLarge span {
-		padding: 15px 25px;
-		border-radius: 26px;
-		font-size: 25px;
-
-		@media (min-width: 768px) {
-			padding: 32px 55px;
-			border-radius: 61px;
-			font-size: 55px;
-		}
-
-		@media (min-width: 1024px) {
-			padding: 20px 35px;
-			border-radius: 40px;
-			font-size: 35px;
-		}
-
-		@media (min-width: 1200px) {
-			padding: 25px 44px;
-			border-radius: 44px;
-			font-size: 43px;
-		}
-
-		@media (min-width: 1600px) {
-			padding: 35px 58px;
-			border-radius: 64px;
-			font-size: 58px;
-		}
 	}
 
 	/******** Colors ***********/
-	&.lavender-gray span {
-		background: #b8b2d2;
+	&.razzmatazz-3 span {
+		background-color: #f8b6d3;
 	}
 
-	&.mischka span {
-		background: #e4e3e7;
+	&.razzmatazz-2 span {
+		background-color: #f26ca7;
 	}
 
-	&.french-lilac span {
-		background: #dbb0e8;
+	&.purple-munsell-3 span {
+		background-color: #dbb0e8;
 	}
 
-	&.perano span {
-		background: #b8c1f0;
+	&.purple-munsell-2 span {
+		background-color: #c177d7;
 	}
 
-	&.classic-rose span {
-		background: #fcdae9;
+	&.space-cadet-3 span {
+		background-color: #a7a6b0;
 	}
 
-	&.foam span {
-		background: #d9fcfc;
+	&.florescent-blue-3 span {
+		background-color: #a6f8f8;
 	}
 
-	&.vis-vis span {
-		background: #ffefab;
+	&.cyber-yellow-3 span {
+		background-color: #ffefab;
 	}
 
-	&.mischka-2 span {
-		background: #d3d3d8;
+	&.cyber-yellow-2 span {
+		background-color: #ffe36f;
 	}
 
-	&.charlotte span {
-		background: #a6f8f8;
+	&.picotee-blue-3 span {
+		background-color: #b8b2d2;
 	}
 
-	&.white-pointer span {
-		background: #fef2ff;
+	&.picotee-blue-4 span {
+		background-color: #b8c1f0;
 	}
 
-	&.shalimar span {
-		background: #fffac0;
+	&.florescent-blue-3 span {
+		background-color: #a6f8f8;
 	}
 
-	&.snowy-mint span {
-		background: #c9fec4;
+	&.guardians-blue-2 span {
+		background-color: #586edd;
+	}
+
+	/** Logos **/
+
+	&.kenze span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634732265b35a1570b3d58d0_kenzen.png');
+	}
+
+	&.nickson span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226307f8f5ed44655f8_nickson.png');
+	}
+
+	&.crafty span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226c49f2e018d0b2ced_crafty.png');
+	}
+
+	&.phood span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634732264d00984e778964d8_phood.png');
+	}
+
+	&.rollkall span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/6347322694e3093d59150752_rollkall.png');
+	}
+
+	&.livly span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/6347322600eca3a1346a38f4_livly.png');
+	}
+
+	&.recess span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226cdfa6211cc37a0ac_recess.png');
+	}
+
+	&.playfull span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226fa69485898966e32_playfull.png');
 	}
 }
