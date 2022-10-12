@@ -1,0 +1,170 @@
+.demo-wrapper {
+	height: 800px;
+	position: relative;
+	background: #fef2ff;
+	margin-bottom: 100vh;
+}
+
+.pills-fallbox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	contain: strict;
+	user-select: none;
+}
+
+.pills-fallbox-item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-100%, -100%);
+	will-change: transform;
+
+	span {
+		display: inline-block;
+		padding: 12px 20px;
+		transform: translate(-50%, -50%);
+		cursor: -webkit-grab;
+		cursor: -moz-grab;
+		cursor: grab;
+		color: #000;
+		background: #fef2ff;
+		border-radius: 18px;
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 100%;
+		letter-spacing: -0.02em;
+
+		&:active {
+			cursor: -webkit-grabbing;
+			cursor: -moz-grabbing;
+			cursor: grabbing;
+		}
+
+		@media (min-width: 768px) {
+			padding: 14px 24px;
+			border-radius: 25px;
+			font-size: 22px;
+		}
+
+		@media (min-width: 1600px) {
+			padding: 18px 31px;
+			border-radius: 33px;
+			font-size: 28px;
+		}
+	}
+
+	/******** Sizes ***********/
+	&.large span {
+		padding: 13px 23px;
+		border-radius: 25px;
+		font-size: 23px;
+
+		@media (min-width: 768px) {
+			padding: 30px 50px;
+			border-radius: 55px;
+			font-size: 49px;
+		}
+
+		@media (min-width: 1200px) {
+			padding: 23px 40px;
+			border-radius: 44px;
+			font-size: 38px;
+		}
+
+		@media (min-width: 1024px) {
+			padding: 19px 32px;
+			border-radius: 36px;
+			font-size: 31px;
+		}
+
+		@media (min-width: 1600px) {
+			padding: 31px 54px;
+			border-radius: 58px;
+			font-size: 52px;
+		}
+	}
+
+	&.extraLarge span {
+		padding: 15px 25px;
+		border-radius: 26px;
+		font-size: 25px;
+
+		@media (min-width: 768px) {
+			padding: 32px 55px;
+			border-radius: 61px;
+			font-size: 55px;
+		}
+
+		@media (min-width: 1024px) {
+			padding: 20px 35px;
+			border-radius: 40px;
+			font-size: 35px;
+		}
+
+		@media (min-width: 1200px) {
+			padding: 25px 44px;
+			border-radius: 44px;
+			font-size: 43px;
+		}
+
+		@media (min-width: 1600px) {
+			padding: 35px 58px;
+			border-radius: 64px;
+			font-size: 58px;
+		}
+	}
+
+	/******** Colors ***********/
+	&.lavender-gray span {
+		background: #b8b2d2;
+	}
+
+	&.mischka span {
+		background: #e4e3e7;
+	}
+
+	&.french-lilac span {
+		background: #dbb0e8;
+	}
+
+	&.perano span {
+		background: #b8c1f0;
+	}
+
+	&.classic-rose span {
+		background: #fcdae9;
+	}
+
+	&.foam span {
+		background: #d9fcfc;
+	}
+
+	&.vis-vis span {
+		background: #ffefab;
+	}
+
+	&.mischka-2 span {
+		background: #d3d3d8;
+	}
+
+	&.charlotte span {
+		background: #a6f8f8;
+	}
+
+	&.white-pointer span {
+		background: #fef2ff;
+	}
+
+	&.shalimar span {
+		background: #fffac0;
+	}
+
+	&.snowy-mint span {
+		background: #c9fec4;
+	}
+}

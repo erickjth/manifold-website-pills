@@ -1,40 +1,31 @@
-import './styles.css';
-import Matter from 'matter-js';
+import './styles.scss';
+import { Engine, Runner, MouseConstraint, Mouse, Composite, Body, Bodies, Events } from 'matter-js';
 import { gsap } from 'gsap';
 
-const Engine = Matter.Engine,
-	Runner = Matter.Runner,
-	MouseConstraint = Matter.MouseConstraint,
-	Mouse = Matter.Mouse,
-	Composite = Matter.Composite,
-	Body = Matter.Body,
-	Bodies = Matter.Bodies,
-	Events = Matter.Events;
+class GravityPillsFall {
+	constructor(selector = '.pills-fallbox', itemSelector = '.pills-fallbox-item') {
+		this.pillContainer = document.querySelector(selector);
+		this.pillItems = Array.from(this.pillContainer.querySelectorAll(itemSelector));
+	}
 
-function Pills() {
-	this.element = document.querySelector('.pt-fallbox');
-	this.item = Array.from(this.element.querySelectorAll('.pt-fallbox-item'));
-	this.isLg = this.element.classList.contains('-lg');
-	this.isXl = this.element.classList.contains('-xl');
-
-	this.createWorld = function () {
-		this.height = this.element.offsetHeight;
-		this.width = this.element.offsetWidth;
+	setupWorld() {
+		this.height = this.pillContainer.offsetHeight;
+		this.width = this.pillContainer.offsetWidth;
 		this.engine = Engine.create({ gravity: { y: 0.8 } });
 		this.world = this.engine.world;
 		this.runner = Runner.create({ enabled: false });
-		this.mouse = Mouse.create(this.element);
-		this.element.removeEventListener('mousewheel', this.mouse.mousewheel);
-		this.element.addEventListener('mouseleave', this.mouse.mouseup);
+		this.mouse = Mouse.create(this.pillContainer);
+		this.pillContainer.removeEventListener('mousewheel', this.mouse.mousewheel);
+		this.pillContainer.addEventListener('mouseleave', this.mouse.mouseup);
 		this.mouseConstraint = MouseConstraint.create(this.engine, {
 			mouse: this.mouse,
 			constraint: { render: { visible: false } },
 		});
 		Composite.add(this.engine.world, [this.mouseConstraint]);
 		Runner.run(this.runner, this.engine);
-	};
+	}
 
-	this.createWalls = function () {
+	setupWalls() {
 		this.wallL = Bodies.rectangle(-250, this.height / 2, 500, 4 * this.height, {
 			isStatic: true,
 		});
@@ -45,24 +36,24 @@ function Pills() {
 			isStatic: true,
 		});
 		Composite.add(this.engine.world, [this.wallB, this.wallL, this.wallR]);
-	};
+	}
 
-	this.createTopWall = function () {
+	setupTopWall() {
 		this.wallT = Bodies.rectangle(0, -250, 2 * this.width, 500, {
 			isStatic: true,
 		});
 		Composite.add(this.engine.world, [this.wallT]);
-	};
+	}
 
-	this.startObserver = function () {
+	startObserver() {
 		this.observer = new IntersectionObserver(e => {
 			this.runner.enabled = e[0].isIntersecting;
 		});
 
-		this.observer.observe(this.element);
-	};
+		this.observer.observe(this.pillContainer);
+	}
 
-	this.startUnfoldObserver = function () {
+	startUnfoldObserver() {
 		this.unfoldObserver = new IntersectionObserver(
 			e => {
 				if (e[0].isIntersecting) {
@@ -73,30 +64,33 @@ function Pills() {
 			{ rootMargin: '-50% 0% -35% 0%' }
 		);
 
-		this.unfoldObserver.observe(this.element);
-	};
+		this.unfoldObserver.observe(this.pillContainer);
+	}
 
-	this.refresh = function () {
-		if (this.height === this.element.offsetHeight && this.width === this.element.offsetWidth) {
+	refresh() {
+		if (
+			this.height === this.pillContainer.offsetHeight &&
+			this.width === this.pillContainer.offsetWidth
+		) {
 			return false;
 		}
 
-		this.height = this.element.offsetHeight;
-		this.width = this.element.offsetWidth;
+		this.height = this.pillContainer.offsetHeight;
+		this.width = this.pillContainer.offsetWidth;
 
 		setTimeout(() => {
 			this.updateWalls();
 			this.updateBodies();
 		});
-	};
+	}
 
-	this.bindResize = function () {
+	bindResize() {
 		this.resizeFn = () => this.refresh();
 		window.addEventListener('resize', this.resizeFn);
-	};
+	}
 
-	this.makeScrollGravity = function () {
-		const e = this.isXl ? 0.07 : 0.2;
+	makeScrollGravity() {
+		const e = 0.2;
 		let n = 0;
 		Events.on(this.runner, 'tick', () => {
 			const pageYOffset = window.pageYOffset;
@@ -104,9 +98,9 @@ function Pills() {
 			this.engine.world.gravity.y = 0.8 - gsap.utils.clamp(-2, 4, r * e);
 			n = pageYOffset;
 		});
-	};
+	}
 
-	this.updateWalls = function () {
+	updateWalls() {
 		if (this.wallT) {
 			Body.setVertices(
 				this.wallT,
@@ -153,11 +147,11 @@ function Pills() {
 				);
 			}
 		}
-	};
+	}
 
-	this.createBodies = function () {
+	setupBodies() {
 		this.bodies = [];
-		this.item.forEach((item, index) => {
+		this.pillItems.forEach((item, index) => {
 			const innerItem = item.querySelector('span');
 			const rect = item.getBoundingClientRect();
 			const xSetter = gsap.quickSetter(item, 'x', 'px');
@@ -188,10 +182,10 @@ function Pills() {
 		});
 
 		Composite.add(this.engine.world, this.bodies);
-	};
+	}
 
-	this.updateBodies = function () {
-		this.item.forEach((item, n) => {
+	updateBodies() {
+		this.pillItems.forEach((item, n) => {
 			const currentRect = this.bodies[n];
 			const innerItem = item.querySelector('span');
 			const rect = item.getBoundingClientRect();
@@ -221,36 +215,34 @@ function Pills() {
 				}
 			}
 		});
-	};
+	}
 
-	this.unfoldBodies = function () {
-		const isLg = this.isLg ? 200 : 80;
-
+	unfoldBodies() {
 		this.bodies.forEach(function (rect, index) {
-			setTimeout(() => Body.setStatic(rect, false), index * isLg);
+			setTimeout(() => Body.setStatic(rect, false), index * 80);
 		});
 
 		let n = true;
 		Events.on(this.runner, 'tick', () => {
 			if (n && this.bodies[this.bodies.length - 1].position.y > 70) {
-				this.createTopWall();
-				this.isLg || this.makeScrollGravity();
+				this.setupTopWall();
+				this.makeScrollGravity();
 				n = false;
 			}
 		});
-	};
+	}
 
-	this.init = function () {
-		this.createWorld();
-		this.createWalls();
-		this.createBodies();
+	init() {
+		this.setupWorld();
+		this.setupWalls();
+		this.setupBodies();
 		this.startObserver();
 		this.startUnfoldObserver();
 		this.bindResize();
-	};
+	}
 }
 
 // wait for DOM to load
 window.addEventListener('DOMContentLoaded', () => {
-	new Pills().init();
+	new GravityPillsFall().init();
 });
