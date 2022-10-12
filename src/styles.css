@@ -25,17 +25,19 @@
 
 @media (min-width: 1200px) {
 	.pt-advantage-figure {
+		height: 810px;
 	}
 }
 
-@media (min-width: 1600px) {
+/* @media (min-width: 1600px) {
 	.pt-advantage-figure {
 	}
 }
 @media (min-width: 2050px) and (min-height: 950px) {
 	.pt-advantage-figure {
 	}
-}
+} */
+
 .pt-advantage-figure-box {
 	position: absolute;
 	top: 0;
