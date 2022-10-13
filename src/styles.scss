@@ -56,7 +56,7 @@
 
 		&:empty {
 			background-position: center;
-			background-size: 80%;
+			background-size: 70%;
 			background-repeat: no-repeat;
 			&::before {
 				content: '&nbsp;';
@@ -138,34 +138,46 @@
 	/** Logos **/
 
 	&.kenze span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634732265b35a1570b3d58d0_kenzen.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878ba5bafee0dd80e90f7_kenzen.png');
+		background-size: 60%;
 	}
 
 	&.nickson span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226307f8f5ed44655f8_nickson.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878bacdd4cd9b297b064a_nickson.png');
+		background-size: 60%;
 	}
 
 	&.crafty span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226c49f2e018d0b2ced_crafty.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878bafcc3717828f5f239_crafty.png');
+		background-size: 45%;
 	}
 
 	&.phood span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634732264d00984e778964d8_phood.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878ba08d6ec76e666333d_phood.png');
+		background-size: 50%;
 	}
 
 	&.rollkall span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/6347322694e3093d59150752_rollkall.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878ba2727be0721f97157_RK.png');
+		background-size: 65%;
 	}
 
 	&.livly span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/6347322600eca3a1346a38f4_livly.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878ba8041417f4359aa00_Livly.png');
+		background-size: 50%;
 	}
 
 	&.recess span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226cdfa6211cc37a0ac_recess.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878bacb59b648428e9296_recess.png');
 	}
 
 	&.playfull span {
-		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/63473226fa69485898966e32_playfull.png');
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878bae86fdc3a8fd855a5_playful.png');
+		background-size: 60%;
+	}
+
+	&.banyan span {
+		background-image: url('https://uploads-ssl.webflow.com/62682b2cda7d48ac9cf59289/634878ba2862ca60382d7e22_banyan.png');
+		background-size: 50%;
 	}
 }
