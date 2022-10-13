@@ -157,7 +157,7 @@ class GravityPillsFall {
 	setupBodies() {
 		this.bodies = [];
 		this.pillItems.forEach((item, index) => {
-			const innerItem = item.querySelector('span,img');
+			const innerItem = item.querySelector('span');
 			const rect = item.getBoundingClientRect();
 			const xSetter = gsap.quickSetter(item, 'x', 'px');
 			const ySetter = gsap.quickSetter(item, 'y', 'px');

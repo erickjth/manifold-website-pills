@@ -2,6 +2,7 @@
 	height: 800px;
 	position: relative;
 	background: #fef2ff;
+	margin-bottom: 100vh;
 }
 
 .demo-2 {
@@ -29,20 +30,25 @@
 	transform: translate(-100%, -100%);
 	will-change: transform;
 
+	&:not(.logo) {
+		span {
+			font-family: 'IBM Plex Mono';
+			font-style: normal;
+			font-weight: 300;
+			line-height: 100%;
+			font-size: 30px;
+			letter-spacing: -1.9px;
+		}
+	}
+
 	span {
-		display: inline-flex;
+		display: inline-block;
 		padding: 30px;
 		border-radius: 46px;
 		transform: translate(-50%, -50%);
 		cursor: grab;
 		color: #23213a;
 		background-color: #fef2ff;
-		font-family: 'IBM Plex Mono';
-		font-style: normal;
-		font-weight: 300;
-		line-height: 100%;
-		font-size: 30px;
-		letter-spacing: -1.9px;
 
 		&:active {
 			cursor: grabbing;
@@ -59,8 +65,8 @@
 		}
 
 		img {
-			height: 90px;
-			width: auto;
+			height: 100px;
+			width: 100px;
 			user-select: none;
 			pointer-events: none;
 		}
@@ -74,10 +80,6 @@
 				height: 70px;
 			}
 		}
-	}
-
-	&.logo span {
-		padding: 0;
 	}
 
 	/******** Sizes ***********/
